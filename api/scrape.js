@@ -163,6 +163,7 @@ function extractJson(text) {
 function groqRequest(apiKey, prompt) {
     return new Promise((resolve, reject) => {
         const body = JSON.stringify({
+            model: process.env.AI_MODEL || 'llama3-70b-8192',
             messages: [{ role: 'user', content: prompt }],
             temperature: 0.2,
             max_tokens: 4096,
