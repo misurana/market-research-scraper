@@ -163,7 +163,7 @@ function extractJson(text) {
 function groqRequest(apiKey, prompt) {
     return new Promise((resolve, reject) => {
         const body = JSON.stringify({
-            model: 'llama-3.3-70b-versatile',
+            model: 'openai/gpt-oss-120b',
             messages: [{ role: 'user', content: prompt }],
             temperature: 0.2,
             max_tokens: 4096,
