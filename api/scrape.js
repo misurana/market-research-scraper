@@ -128,8 +128,8 @@ function buildPrompt(pages, domain) {
     return `You are a world-class market research analyst. Extensively analyze the scraped content from "${domain}".
 
 STRICT QUANTITY RULES:
-1. KEYWORDS: Provide EXACTLY 10-15 ranked items.
-2. ALL OTHER ARRAY FIELDS: Provide EXACTLY 5-8 descriptive entries each (Needs, Problems, Solutions, Issues, Topics, Interests, Signals, Trends, Products).
+1. KEYWORDS: Provide EXACTLY 5-7 ranked items.
+2. ALL OTHER ARRAY FIELDS: Provide EXACTLY 2-4 descriptive entries each (Needs, Problems, Solutions, Issues, Topics, Interests, Signals, Trends, Products).
 
 JSON RULES:
 - Return ONLY the JSON object. 
@@ -167,6 +167,7 @@ function groqRequest(apiKey, prompt) {
             messages: [{ role: 'user', content: prompt }],
             temperature: 0.2,
             max_tokens: 4096,
+            response_format: { type: 'json_object' }
         });
         const options = {
             hostname: 'api.groq.com',
